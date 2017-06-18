@@ -36,6 +36,7 @@ extern "C"
 #include "nrf_delay.h"
 #endif
 #ifdef USE_SEGGER_RTT
+#include <cstdarg>
 #include "SEGGER_RTT.h"
 #endif
 }
