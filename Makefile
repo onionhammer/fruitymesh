@@ -194,8 +194,8 @@ $(OBJECT_DIRECTORY)/%.o: %.c
 ## Create objects from C++ source files
 $(OBJECT_DIRECTORY)/%.o: %.cpp
 	@echo Compiling file: $(notdir $<)
-	$(NO_ECHO)$(CXX) --std=c++1z $(CXXFLAGS) $(INC_PATHS) -c -o $@ $<
-	$(NO_ECHO)$(CXX) --std=c++1z $(CXXFLAGS) $(INC_PATHS) -MM -MT $(OBJECT_DIRECTORY)/$*.o $< -o $(DEPEND_DIRECTORY)/$*.d
+	$(NO_ECHO)$(CXX) --std=c++1y $(CXXFLAGS) $(INC_PATHS) -c -o $@ $<
+	$(NO_ECHO)$(CXX) --std=c++1y $(CXXFLAGS) $(INC_PATHS) -MM -MT $(OBJECT_DIRECTORY)/$*.o $< -o $(DEPEND_DIRECTORY)/$*.d
 
 ## Assemble files
 $(OBJECT_DIRECTORY)/%.o: %.s
