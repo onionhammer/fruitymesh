@@ -252,6 +252,9 @@ serial:
 	# FIXME use proper tools for multiple platforms
 	$(NO_ECHO)screen $(SERIAL_DEVICE) 38400
 
+reset:
+	$(NO_ECHO)$(NRFJPROG) --reset -f $(PLATFORM) $(PROGFLAGS)
+
 .NOTPARALLEL: clean
 .PHONY: flash flash_softdevice clean serial debug
 
