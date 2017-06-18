@@ -3,7 +3,7 @@
 # makefile
 #
 
-CPU := cortex-m3
+CPU := cortex-m4
 LINKER_SCRIPT := linker/gcc_nrf52_s132.ld
 
 C_SOURCE_FILES   += $(COMPONENTS)/toolchain/system_nrf52.c
