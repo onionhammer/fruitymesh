@@ -64,9 +64,13 @@ void Module::LoadModuleConfiguration()
 		ConfigurationLoadedHandler();
 	} else {
 		//Start to load the saved configuration
-
-		bool bootloaderAvailable = (NRF_UICR->BOOTLOADERADDR != 0xFFFFFFFF);
-		u32 bootloaderAddress = bootloaderAvailable ? NRF_UICR->BOOTLOADERADDR : FLASH_SIZE;
+		#if defined(NRF51)
+		auto bootloaderAddr = NRF_UICR->BOOTLOADERADDR;
+		#elif defined(NRF52)
+		auto bootloaderAddr = NRF_UICR->NRFFW[0];
+		#endif
+		bool bootloaderAvailable = (bootloaderAddr != 0xFFFFFFFF);
+		u32 bootloaderAddress = bootloaderAvailable ? bootloaderAddr : FLASH_SIZE;
 		u32 appSettingsAddress = bootloaderAddress - (PSTORAGE_NUM_OF_PAGES+1) * PAGE_SIZE;
 
 		//FIXME: only meant as hotfix, replace with NewStorage
